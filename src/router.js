@@ -8,6 +8,7 @@ import Index from '@/views/Index'
 
 // admin
 import Login from '@/views/admin/Login'
+import ViewTest from '@/views/admin/ViewTest'
 
 // main
 import NotFound from '@/views/main/NotFound'
@@ -16,6 +17,12 @@ import Home from '@/views/main/Home'
 Vue.use(VueRouter)
 
 const routes = [
+  // 测试页面
+  {
+    path: '/view_test',
+    name: 'view_test',
+    component: ViewTest
+  },
   // 登陆页面
   {
     path: '/login',
@@ -29,10 +36,15 @@ const routes = [
     component: NotFound
   },
   // 如果是根路径的话，重定向到index路径
-  {
+  /* {
     path: '/',
     // redirect: '/index'
     redirect: '/login'
+  }, */
+  {
+    path: '/',
+    // redirect: '/index'
+    redirect: '/view_test'
   },
   // 如果访问index则跳转到index路径
   {
@@ -152,13 +164,13 @@ const router = new VueRouter({
 })
 
 // 添加路由守卫
-/* router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   const isLogin = localStorage.code == md5("0") ? true : false;
   if (to.path == "/login" || to.path == '/register') {
     next();
   } else {
     isLogin ? next() : next("/login");
   }
-}); */
+});
 
 export default router

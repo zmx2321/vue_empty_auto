@@ -14,5 +14,6 @@ export default {
   #app {
     width: 100vw;
     height: 100vh;
+    font-size: 12px;
   }
 </style>

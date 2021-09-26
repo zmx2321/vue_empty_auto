@@ -1,6 +1,8 @@
 const bodyParser = require('body-parser');
 const jsmd5 = require('js-md5')
 
+const HtmlWebpackInlinePlugin = require('html-webpack-inline-plugin');
+
 // const serverPath = process.env.VUE_APP_BASE_API;  // 配置文件也可以获取.env变量
 // console.log("env", serverPath)
 
@@ -85,11 +87,34 @@ module.exports = {
 
   // 是否在构建生产包时生成 sourceMap 文件，false将提高构建速度
   productionSourceMap: false,
+
+  /* configureWebpack: {
+    plugins: [
+      new HtmlWebpackInlinePlugin({
+        compress: false
+      })
+    ]
+  }, */
+
+  /* "postcss-pxtorem": "5.1.1",
+  css: {
+    loaderOptions: {
+      postcss: {
+        plugins: [
+          require('postcss-pxtorem')({
+            rootValue: 16, // 换算的基数
+            selectorBlackList: [], // 忽略转换正则匹配项
+            propList: ['*'],
+          }),
+        ]
+      }
+    }
+  }, */
   
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
-      patterns: ['src/assets/less/demo.less', 'src/assets/less/global.less']
+      patterns: ['src/assets/less/tools.less', 'src/assets/less/global.less']
     }
   }
 }

@@ -4,14 +4,14 @@
             <div class="manage_tip">
                 <span class="title">{{ this.$store.state.title }}</span>
             </div>
-            <el-form :model="loginUser" @keyup.enter.native="submitForm('loginForm')" status-icon :rules="rules" ref="loginForm" class="loginForm" label-width="80px">
+            <el-form :model="loginUser" @keyup.enter.native="submitForm('loginForm')" status-icon :rules="rules" ref="loginForm" class="login_form" label-width="80px">
                 <el-form-item label="用户名" prop="username">
                     <el-input v-model="loginUser.username" placeholder="请输入用户名" clearable></el-input>
                 </el-form-item>
                 <el-form-item label="密码" prop="password">
                     <el-input type="password" autocomplete="new-password" v-model="loginUser.password" placeholder="请输入密码" clearable></el-input>
                 </el-form-item>
-                <el-form-item>
+                <el-form-item class="from_btn">
                     <el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登陆</el-button>
                 </el-form-item>
             </el-form>
@@ -54,9 +54,9 @@ export default {
                     // 验证通过，密码进行md5加密
                     this.loginUser.password = this.md5(this.loginUser.password);
 
-                    this.$router.push("/index");
+                    // this.$router.push("/index");
 
-                    /* // 请求登陆接口
+                    // 请求登陆接口
                     login(this.loginUser).then(res=> {
                         console.log("登陆", res)
 
@@ -85,7 +85,7 @@ export default {
                         } else {
                             this.$message.warning(msg)
                         }
-                    }) */
+                    })
                 } else {
                     this.$message.error("表单填写错误");
                 }
@@ -111,12 +111,14 @@ export default {
 
     .form_container {
         position: absolute;
-        top: 20%;
-        left: 34%;
+        top: 38%;
+        left: 48.5%;
+        transform: translate(-50%, -50%);
         width: 370px;
         padding: 25px;
         text-align: center;
         border-radius: 5px;
+        min-width: 165Px;
     }
 
     .manage_tip {
@@ -127,7 +129,7 @@ export default {
         }
     }
 
-    .loginForm {
+    .login_form {
         margin-top: 20px;
         background-color: #fff;
         padding: 20px 40px 20px 20px;
@@ -136,6 +138,7 @@ export default {
 
         .submit_btn {
             width: 100%;
+            font-size: 12px;
         }
     }
 }
