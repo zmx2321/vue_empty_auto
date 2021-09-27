@@ -43,8 +43,8 @@ const routes = [
   }, */
   {
     path: '/',
-    // redirect: '/index'
-    redirect: '/view_test'
+    redirect: '/index'
+    // redirect: '/view_test'
   },
   // 如果访问index则跳转到index路径
   {

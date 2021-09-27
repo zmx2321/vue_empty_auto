@@ -4,7 +4,7 @@
             <HeadNav></HeadNav>
         </el-header>
         <el-container>
-            <el-aside class="aside f-oh">
+            <el-aside class="aside f-oh zmx_aside">
                 <LeftMenu></LeftMenu>
             </el-aside>
             <el-main class="main f-oh">
@@ -32,26 +32,26 @@ export default {
 </script>
 
 <style lang="less" scoped>
-    .container {
-        width: 100%;
-        height: 100%;
+.container {
+    width: 100%;
+    height: 100%;
 
-        .header, .aside{
-            background: #324057;
-        }
-
-        .header{
-            padding: 0;
-            border-bottom: 1px solid #1f2d3d;
-        }
-
-        .aside {
-            flex: 0 0 230px;
-            width: 230px;
-        }
-
-        .main {
-            padding: 0;
-        }
+    .header, .aside{
+        background: #324057;
     }
+
+    .header{
+        padding: 0;
+        border-bottom: 1px solid #1f2d3d;
+    }
+
+    .aside {
+        flex: 0 0 230px;
+        width: 230px;
+    }
+
+    .main {
+        padding: 0;
+    }
+}
 </style>
