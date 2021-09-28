@@ -1,10 +1,10 @@
 <template>
-    <section class="home">
-        <div class="container">
+    <section class="home_wrap">
+        <div class="home_top">
             <p class="lead">{{ title }}</p>
         </div>
 
-        <ul class="bottom">
+        <ul class="home_bottom">
             <li>powered by</li>
             <li>
                 <a href="http://xxx.com">xxx.com</a>
@@ -48,14 +48,14 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.home {
+.home_wrap {
     padding: 0;
     width: 100%;
     height: 100%;
     background: url(../../assets/images/showcase.png) top no-repeat;
     background-size: 100% 100%;
 
-    .container {
+    .home_top {
         width: 100%;
         height: 100%;
         box-sizing: border-box;
@@ -73,7 +73,7 @@ export default {
         }
     }
 
-    .bottom{
+    .home_bottom{
         position: absolute;
         bottom: 32px;
         left: 50%;

@@ -7,7 +7,7 @@
             <el-aside class="aside f-oh zmx_aside">
                 <LeftMenu></LeftMenu>
             </el-aside>
-            <el-main class="main f-oh">
+            <el-main class="main f-oh zmx_main">
                 <router-view></router-view>
             </el-main>
         </el-container>

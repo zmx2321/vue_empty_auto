@@ -244,15 +244,12 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@fontColor: #fff;
-
-/* header_nav */
 .header_nav{
     min-width: 390px;
     height: 100%;
 
     span {
-        color: @fontColor;
+        color: @layerFontColor;
     }
 
     .title span{

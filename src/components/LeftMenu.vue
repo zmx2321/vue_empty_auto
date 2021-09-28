@@ -118,7 +118,7 @@ export default {
 
         span {
             margin-left: 8px;
-            color: @sideFontColor;
+            color: @layerFontColor;
         }
 
         li.is-opened {

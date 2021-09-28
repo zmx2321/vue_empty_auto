@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <section class="form_container">
+        <section class="form_container zmx_login_container">
             <div class="manage_tip">
                 <span class="title">{{ this.$store.state.title }}</span>
             </div>
@@ -100,8 +100,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@fontColor: #fff;
-
 .login {
     position: absolute;
     width: 100%;
@@ -118,14 +116,13 @@ export default {
         padding: 25px;
         text-align: center;
         border-radius: 5px;
-        min-width: 165Px;
     }
 
     .manage_tip {
         .title {
             font-weight: bold;
-            font-size: 26px;
-            color: @fontColor;
+            font-size: @btnFontSize;
+            color: @layerFontColor;
         }
     }
 
