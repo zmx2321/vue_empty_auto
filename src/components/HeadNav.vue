@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import * as utils from '@/utils/util'
+
 /* import {
     getUser,  // 获取用户
 } from "@/api/user" */
@@ -128,15 +130,6 @@ export default {
             this.$refs[formName].resetFields();
         },
 
-        // 判断对象为空
-        objIsEmpty(obj) {
-            if(JSON.stringify(obj) == '{}' ){
-                return true;
-            }
-
-            return false;
-        },
-
         /**
          * api getUser
          * 获取用户
@@ -166,7 +159,7 @@ export default {
 
         // 修改密码
         modifyPassword() {
-            if(!this.objIsEmpty(this.$refs)) {
+            if(!utils.objIsEmpty(this.$refs)) {
                 this.$refs.clearValidate;
                 this.modifyUser = {
                     userId: "",
