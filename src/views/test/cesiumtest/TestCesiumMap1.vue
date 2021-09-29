@@ -1,12 +1,12 @@
 <template>
     <section class="main_cont">
-        empty
+        TestCesiumMap1
     </section>
 </template>
 
 <script>
 export default {
-    name: "testmap",
+    name: "TestCesiumMap1",
 
     data () {
         return {

@@ -1,12 +1,12 @@
 <template>
     <section class="main_cont">
-        empty
+        TestSuperMap1
     </section>
 </template>
 
 <script>
 export default {
-    name: "testmap",
+    name: "TestSuperMap1",
 
     data () {
         return {

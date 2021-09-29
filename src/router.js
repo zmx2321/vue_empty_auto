@@ -8,7 +8,6 @@ import Index from '@/views/Index'
 
 // admin
 import Login from '@/views/admin/Login'
-import ViewTest from '@/views/admin/ViewTest'
 
 // main
 import NotFound from '@/views/main/NotFound'
@@ -17,12 +16,6 @@ import Home from '@/views/main/Home'
 Vue.use(VueRouter)
 
 const routes = [
-  // 测试页面
-  {
-    path: '/view_test',
-    name: 'view_test',
-    component: ViewTest
-  },
   // 登陆页面
   {
     path: '/login',
@@ -36,15 +29,10 @@ const routes = [
     component: NotFound
   },
   // 如果是根路径的话，重定向到index路径
-  /* {
+  {
     path: '/',
     // redirect: '/index'
     redirect: '/login'
-  }, */
-  {
-    path: '/',
-    redirect: '/index'
-    // redirect: '/view_test'
   },
   // 如果访问index则跳转到index路径
   {
@@ -61,6 +49,7 @@ const routes = [
       /**
        * test
        */
+      // test
       {
         path: '/test',
         name: "test",
@@ -71,50 +60,68 @@ const routes = [
         name: "test1",
         component: resolve => require(['@/views/test/Test1'], resolve)
       },
+      // maptest
       {
         path: '/test_map',
         name: "test_map",
-        component: resolve => require(['@/views/test/TestMap'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap'], resolve)
       },
       {
         path: '/test_map1',
         name: "test_map1",
-        component: resolve => require(['@/views/test/TestMap1'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap1'], resolve)
       },
       {
         path: '/test_map2',
         name: "test_map2",
-        component: resolve => require(['@/views/test/TestMap2'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap2'], resolve)
       },
       {
         path: '/test_map3',
         name: "test_map3",
-        component: resolve => require(['@/views/test/TestMap3'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap3'], resolve)
       },
       {
         path: '/test_map4',
         name: "test_map4",
-        component: resolve => require(['@/views/test/TestMap4'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap4'], resolve)
       },
       {
         path: '/test_map5',
         name: "test_map5",
-        component: resolve => require(['@/views/test/TestMap5'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap5'], resolve)
       },
       {
         path: '/test_map6',
         name: "test_map6",
-        component: resolve => require(['@/views/test/TestMap6'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap6'], resolve)
       },
       {
         path: '/test_map7',
         name: "test_map7",
-        component: resolve => require(['@/views/test/TestMap7'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap7'], resolve)
       },
       {
         path: '/test_map8',
         name: "test_map8",
-        component: resolve => require(['@/views/test/TestMap8'], resolve)
+        component: resolve => require(['@/views/test/maptest/TestMap8'], resolve)
+      },
+      {
+        path: '/test_map9',
+        name: "test_map9",
+        component: resolve => require(['@/views/test/maptest/TestMap9'], resolve)
+      },
+      // supermaptest
+      {
+        path: '/test_supermap1',
+        name: "test_supermap1",
+        component: resolve => require(['@/views/test/supermaptest/TestSuperMap1'], resolve)
+      },
+      // cesiumtest
+      {
+        path: '/test_cesiummap1',
+        name: "test_cesiummap1",
+        component: resolve => require(['@/views/test/cesiumtest/TestCesiumMap1'], resolve)
       },
 
       /**
