@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import * as utils from '@/utils/util'
+
 export default {
     name: "testmap",
 
