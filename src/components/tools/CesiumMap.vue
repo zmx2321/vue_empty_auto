@@ -20,6 +20,7 @@ export default {
                 baseLayerPicker: true,  //  图层选择器，选择要显示的地图服务和地形服务
                 navigationHelpButton: false,  // 导航帮助按钮，显示默认的地图控制帮助
                 // scene3DOnly : true,//如果设置为true，则所有几何图形以3D模式绘制以节约GPU资源
+                // infoBox: true,  //是否显示点击要素之后显示的信息
             }
         }
     },
@@ -27,23 +28,55 @@ export default {
     methods: {
         resetCesiumView() {
             // 初始化地球
-            window.cesiumViewer = new Cesium.Viewer("cesiumContainer", this.resetViewer)
+            let cesiumViewer = new Cesium.Viewer("cesiumContainer", this.resetViewer)
 
             // 版权清理
-            window.cesiumViewer.bottomContainer.style.display = "none";
+            cesiumViewer.bottomContainer.style.display = "none";
 
             // 搜索框
-            window.cesiumViewer.geocoder.container.style.display = "none";
+            // cesiumViewer.geocoder.container.style.display = "none";
 
             // 底图
-            // window.cesiumViewer.baseLayerPicker._element.style.display = "none";
+            // cesiumViewer.baseLayerPicker._element.style.display = "none";
 
             // 鼠标功能
+
+            // 设置地图地图
+            this.resetMapLayer(cesiumViewer)
             
             // 绑定事件
-            window.cesiumViewer.camera.changed.addEventListener(function (percentage) {
+            cesiumViewer.camera.changed.addEventListener(function (percentage) {
                 console.log("地球转动之后的触发事件")
             });
+
+            // 设置地球
+            this.$emit("resetViewer", cesiumViewer)
+
+            // 供出
+            window.cesiumViewer = cesiumViewer;
+        },
+
+        // 设置地图地图
+        resetMapLayer(viewer) {
+            //定义ImageryProvider：
+            let esriMap = new Cesium.ArcGisMapServerImageryProvider({
+                url:'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer',
+                enablePickFeatures:false
+            });
+
+            //设置ProviderViewModel：
+            let esriMapModel = new Cesium.ProviderViewModel({
+                name:'esri Maps',
+                iconUrl:Cesium.buildModuleUrl('./Widgets/Images/ImageryProviders/esriWorldImagery.png'),
+                tooltip:'ArcGIS 地图服务',
+                creationFunction:function () {
+                    return esriMap;
+                }
+            });
+
+            let providerViewModels = [];
+            providerViewModels.push(esriMapModel);
+            viewer.baseLayerPicker.viewModel.imageryProviderViewModels = providerViewModels;
         },
 
         // 重写搜索
