@@ -13,7 +13,7 @@ export default {
                 // sceneMode : Cesium.SceneMode.SCENE2D, // 初始场景模式 为二维
                 animation: false,  // 动画控制     
                 timeline: false,    // 时间线
-                fullscreenButton: false, // 全屏按钮
+                fullscreenButton: true, // 全屏按钮
                 geocoder: true,  // 查找位置工具，查找到之后会将镜头对准找到的地址，默认使用bing地图
                 homeButton: false,  // 视角返回初始位置
                 sceneModePicker: false,  // 选择视角的模式，有三种：3D，2D，哥伦布视图（CV）
@@ -37,12 +37,15 @@ export default {
             // cesiumViewer.geocoder.container.style.display = "none";
 
             // 底图
-            // cesiumViewer.baseLayerPicker._element.style.display = "none";
+            cesiumViewer.baseLayerPicker._element.style.display = "none";
 
             // 鼠标功能
 
             // 设置地图地图
             this.resetMapLayer(cesiumViewer)
+
+            // this.addTxLayer(cesiumViewer);  // 添加腾讯底图
+            this.addGdLayer(cesiumViewer);  // 添加高德底图
             
             // 绑定事件
             cesiumViewer.camera.changed.addEventListener(function (percentage) {
@@ -77,6 +80,51 @@ export default {
             let providerViewModels = [];
             providerViewModels.push(esriMapModel);
             viewer.baseLayerPicker.viewModel.imageryProviderViewModels = providerViewModels;
+        },
+
+        // 添加腾讯底图
+        addTxLayer(viewer) {
+            console.log("添加腾讯底图")
+
+            // 腾讯影像
+            var base = new Cesium.UrlTemplateImageryProvider({
+            url : 'https://p2.map.gtimg.com/sateTiles/{z}/{sx}/{sy}/{x}_{reverseY}.jpg?version=229',
+                customTags : {
+                sx: function(imageryProvider, x, y, level) {
+                    return x>>4;
+                },
+                    sy:function(imageryProvider, x, y, level) {
+                    return ((1<<level)-y)>>4;
+                }
+            }
+            });
+            viewer.imageryLayers.addImageryProvider(base);
+
+            var custom = new Cesium.UrlTemplateImageryProvider({
+            url : 'https://rt3.map.gtimg.com/tile?z={z}&x={x}&y={reverseY}&styleid=2&version=297'
+            });
+
+            viewer.imageryLayers.addImageryProvider(custom);
+        },
+
+        // 添加高德底图
+        addGdLayer(viewer) {
+            // console.log("添加高德底图")
+
+            var base = new Cesium.UrlTemplateImageryProvider({
+                url : 'https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}'
+            });
+            //viewer.imageryLayers.addImageryProvider(base);
+
+            var viewer = new Cesium.Viewer('cesiumContainer',{
+                imageryProvider:base
+            });
+
+            var road = new Cesium.UrlTemplateImageryProvider({
+                url : 'https://wprd02.is.autonavi.com/appmaptile?x={x}&y={y}&z={z}&lang=zh_cn&size=1&scl=2&style=8&ltype=11'
+            });
+
+            viewer.imageryLayers.addImageryProvider(road);
         },
 
         // 重写搜索
