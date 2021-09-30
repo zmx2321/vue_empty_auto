@@ -21,14 +21,24 @@ export default {
     },
 
     methods: {
-        
+        // 设置地球
+        setCesiumMap() {
+            // console.log(window.cesiumViewer)
+
+            // 显示帧速
+            // window.cesiumViewer.scene.debugShowFramesPerSecond = true;
+
+            // 显示版权
+            // window.cesiumViewer.bottomContainer.style.display = "block";
+        }
     },
 
     created() {
         
     },
+
     mounted() {
-        console.log(window.cesiumViewer)
+        this.setCesiumMap()
     }
 }
 </script>
